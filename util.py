@@ -20,8 +20,20 @@ def batched(iterable, n_cols):
 
 @st.cache_data
 def _read_service_account_secret():
-    with open("local-fragment-426110-s6-a99986423348.json") as f:
-        return json.load(f)
+    return {'type': st.secrets['type'],
+            'project_id': st.secrets['project_id'],
+            'private_key_id': st.secrets['private_key_id'],
+            'private_key': st.secrets['private_key'],
+            'client_email': st.secrets['client_email'],
+            'client_id': st.secrets['client_id'],
+            'auth_uri': st.secrets['auth_uri'],
+            'token_uri': st.secrets['token_uri'],
+            'auth_provider_x509_cert_url': st.secrets['auth_provider_x509_cert_url'],
+            'client_x509_cert_url': st.secrets['client_x509_cert_url'],
+            'universe_domain': st.secrets['universe_domain']}
+# def _read_service_account_secret():
+#     with open("local-fragment-426110-s6-a99986423348.json") as f:
+#         return json.load(f)
 
 
 @st.cache_resource
